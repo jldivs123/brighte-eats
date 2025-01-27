@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:generate": "typeorm migration:generate ./src/migrations/$npm_config_migration_name -d ./src/data-source.ts",
+    "migrate:up": "typeorm migration:run -- -d ./src/data-source.ts",
+    "migrate:down": "typeorm migration:revert -- -d ./src/data-source.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@apollo/server": "^4.11.3",
     "graphql": "^16.10.0",
     "graphql-scalars": "^1.24.0",
     "pg": "^8.13.1",
